@@ -226,20 +226,20 @@ Data/
 
 ### Details
 
-1. ``
+1. 
 
    - A sample video used for testing frame extraction and retrieval.
 
-2. ``
+2. 
 
    - Contains extracted frames from videos. Each frame is saved as a `.jpg` file named in the format `<video_name>.<frame_number>.jpg`.
 
-3. ``
+3. 
 
    - Stores the vector database for text embeddings (`vector_database_text.usearch`).
    - Includes metadata (`image_metadata_text.csv`) linking frames to their corresponding text embeddings.
 
-4. ``
+4. 
 
    - Contains the vector database for image embeddings (`vector_database.usearch`).
    - Metadata (`image_metadata.csv`) provides mappings between frames and embeddings.
