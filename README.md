@@ -1,9 +1,9 @@
 <p align="center">
   <a href="https://www.uit.edu.vn/"><img src="https://www.uit.edu.vn/sites/vi/files/banner.png"></a>
 <h2 align="center"><b>CS336.P11.KHTN - Multimedia Information Retrieval</b></h2>
-  
+
 ---
-  
+
 # EVENT RETRIEVAL FROM VIDEO
 
 ---
@@ -23,7 +23,7 @@
 
 ## Overview
 
-This project implements a **Video Retrieval System** that supports extracting frames from videos, processing them with Optical Character Recognition (OCR), generating embeddings, and performing efficient retrieval using text or multimodal inputs. The system is equipped with a user-friendly interface built with Streamlit.
+This project implements an **Event Retrieval System** that supports extracting frames from videos, processing them with Optical Character Recognition (OCR), generating embeddings, and performing efficient retrieval using text or multimodal inputs. The system is equipped with a user-friendly interface built with Streamlit.
 
 ---
 
@@ -203,3 +203,10 @@ This project utilizes the following tools and libraries:
 | 2   | Tran Minh Quan     | 22521191 | 22521191@gm.uit.edu.vn       |
 | 3   | Chau The Vi        | 22521653 | 22521653@gm.uit.edu.vn       |
 
+### Data and Model Resources
+
+Due to size limitations on GitHub, the `Data` and `model` directories are hosted on Google Drive. You can download them from the following link:
+
+- [Google Drive: Data and Models](https://drive.google.com/drive/folders/1Z0wAtb6-KvkreyvOZNH1O_sOB_P6iQNA?usp=sharing)
+
+After downloading, ensure the directories are placed in the root project folder as described in the **Directory Structure** section.
