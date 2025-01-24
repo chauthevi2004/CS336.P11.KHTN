@@ -1,8 +1,10 @@
 <p align="center">
   <a href="https://www.uit.edu.vn/"><img src="https://www.uit.edu.vn/sites/vi/files/banner.png"></a>
-<h1 align="center"><b>CS336.P11.KHTN - Multimedia Information Retrieval</b></h1>
+<h2 align="center"><b>CS336.P11.KHTN - Multimedia Information Retrieval</b></h2>
 
-# Project Title: EVENT RETRIEVAL FROM VIDEO
+<center>
+    <h1><b>EVENT RETRIEVAL FROM VIDEO</b></h1>
+</center>
 
 ---
 
