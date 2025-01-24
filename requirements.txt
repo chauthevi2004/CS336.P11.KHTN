@@ -1,0 +1,11 @@
+torch
+sentence-transformers
+streamlit
+scikit-learn
+numpy
+pandas
+matplotlib
+Pillow
+scenedetect
+langdetect
+usearch
