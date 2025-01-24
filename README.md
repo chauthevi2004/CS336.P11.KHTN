@@ -18,7 +18,7 @@ This repository implements a video retrieval system that uses frame extraction, 
 5. [File Descriptions](#file-descriptions)
 6. [Example Use Cases](#example-use-cases)
 7. [Acknowledgements](#acknowledgements)
-8. [Data Folder Description](#data-folder-description)
+8. [Group Information](#group-information)
 
 ---
 
@@ -36,16 +36,46 @@ This system enables users to:
 ## **Directory Structure**
 
 ```
-├── extractframe.py           # Frame extraction from videos
-├── Interface.py              # Streamlit-based video retrieval interface
-├── vietocr-embed.ipynb       # Generate Vietnamese text embeddings
-├── vietocr.ipynb             # OCR for text recognition
-├── vectordb-blip2-coco.ipynb # BLIP2-based image embedding creation
-├── model/                    # Folder for models and checkpoints
-├── frames/                   # Folder containing extracted video frames
-├── vectordb/                 # Vector databases for embeddings
-└── videos/                   # Folder containing input video files
+CS336.P11.KHTN/
+├── SourceCode/           # Contains the source code for the project
+│   ├── extractframe.py       # Script for extracting frames from videos
+│   ├── Interface.py          # Streamlit-based retrieval interface
+│   ├── vietocr-embed.ipynb   # Notebook for Vietnamese text embeddings
+│   ├── vietocr.ipynb         # Notebook for OCR processing
+│   └── vectordb-blip2-coco.ipynb # Notebook for image embedding generation
+├── Data/                # Contains the dataset and processed resources
+│   ├── L01_V001.mp4         # Sample video file
+│   ├── frame/               # Directory containing extracted frames
+│   ├── vietocr-embedding2/  # Resources for text embeddings
+│   │   ├── vector_database_text.usearch  # Text embedding vector database
+│   │   └── image_metadata_text.csv       # Text embedding metadata
+│   ├── vectordb-blip2-12/   # Resources for image embeddings
+│   │   ├── vector_database.usearch       # Image embedding vector database
+│   │   ├── image_metadata.csv            # Metadata for image embeddings
+│   │   ├── removed_images.pkl            # Log of removed images
+│   │   └── full/                         # Directory for raw embedding data
 ```
+
+### **SourceCode Folder**
+
+- **extractframe.py**: Script to extract frames from videos using scene detection.
+- **Interface.py**: Provides an interactive Streamlit interface for video retrieval.
+- **vietocr-embed.ipynb**: Generates text embeddings for Vietnamese text extracted from video frames.
+- **vietocr.ipynb**: Processes frames to extract Vietnamese text using OCR.
+- **vectordb-blip2-coco.ipynb**: Creates image embeddings using BLIP2 and stores them in a vector database.
+
+### **Data Folder**
+
+- **L01_V001.mp4**: A sample video file for testing the retrieval system.
+- **frame/**: Contains frames extracted from the sample video, each named in the format `<video_name>.<frame_number>.jpg`.
+- **vietocr-embedding2/**:
+  - `vector_database_text.usearch`: Vector database of text embeddings for the OCR-processed text.
+  - `image_metadata_text.csv`: Metadata mapping text embeddings to their corresponding frames.
+- **vectordb-blip2-12/**:
+  - `vector_database.usearch`: Vector database for image embeddings created from video frames.
+  - `image_metadata.csv`: Metadata mapping image embeddings to their respective frames.
+  - `removed_images.pkl`: Contains information about frames removed during preprocessing.
+  - `full/`: Stores raw data and additional embeddings for images.
 
 ---
 
@@ -197,51 +227,3 @@ This project uses:
 | 2   | Tran Minh Quan     | 22521191 | [22521191@gm.uit.edu.vn](mailto:22521191@gm.uit.edu.vn) |        |
 | 3   | Chau The Vi        | 22521653 | [22521653@gm.uit.edu.vn](mailto:22521653@gm.uit.edu.vn) |        |
 
----
-
-## **Data Folder Description**
-
-### Overview
-
-The `Data` folder contains all resources required for video retrieval, including videos, extracted frames, embeddings, and vector databases.
-
-### Folder Structure
-
-```
-Data/
-├── L01_V001.mp4          # Sample video
-├── frame/                # Extracted frames from videos
-│   ├── L01_V001.47.jpg   # Example frame
-│   ├── L01_V001.531.jpg
-│   └── ...
-├── vietocr-embedding2/   # Text embedding resources
-│   ├── vector_database_text.usearch  # Text embedding vector database
-│   └── image_metadata_text.csv       # Metadata for text embeddings
-├── vectordb-blip2-12/    # Image embedding resources
-│   ├── vector_database.usearch      # Image embedding vector database
-│   ├── image_metadata.csv           # Metadata for image embeddings
-│   ├── removed_images.pkl           # Log of removed images
-│   └── full/                        # Raw embedding data
-```
-
-### Details
-
-1. 
-
-   - A sample video used for testing frame extraction and retrieval.
-
-2. 
-
-   - Contains extracted frames from videos. Each frame is saved as a `.jpg` file named in the format `<video_name>.<frame_number>.jpg`.
-
-3. 
-
-   - Stores the vector database for text embeddings (`vector_database_text.usearch`).
-   - Includes metadata (`image_metadata_text.csv`) linking frames to their corresponding text embeddings.
-
-4. 
-
-   - Contains the vector database for image embeddings (`vector_database.usearch`).
-   - Metadata (`image_metadata.csv`) provides mappings between frames and embeddings.
-   - `removed_images.pkl` logs any frames excluded during embedding creation.
-   - The `full/` directory includes raw data files used to generate embeddings.
