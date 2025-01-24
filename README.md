@@ -3,7 +3,7 @@
 <h2 align="center"><b>CS336.P11.KHTN - Multimedia Information Retrieval</b></h2>
 
 <h1 align="center">
-**EVENT RETRIEVAL FROM VIDEO**
+EVENT RETRIEVAL FROM VIDEO
 </h1>
 
 
