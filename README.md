@@ -74,7 +74,7 @@ This project implements a **Video Retrieval System** that supports extracting fr
 
 ### Prerequisites
 
-- Python 3.11
+- Python 3.11.20
 - `ffmpeg` (for video processing)
 - CUDA (optional, for GPU acceleration)
 
@@ -82,14 +82,13 @@ This project implements a **Video Retrieval System** that supports extracting fr
 
 1. Clone the repository:
    ```bash
-   git clone <repository_url>
-   cd video-retrieval
+   git clone https://github.com/chauthevi2004/CS336.P11.KHTN.git
    ```
 
 2. Create and activate the Conda environment:
    ```bash
-   conda create -n lavis python=3.11 -y
-   conda activate lavis
+   conda create -n ER-env python=3.11 -y
+   conda activate ER-env
    ```
 
 3. Upgrade `pip` and install dependencies:
