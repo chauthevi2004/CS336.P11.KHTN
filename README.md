@@ -1,4 +1,3 @@
-### README
 <p align="center">
   <a href="https://www.uit.edu.vn/"><img src="https://www.uit.edu.vn/sites/vi/files/banner.png"></a>
 <h1 align="center"><b>CS336.P11.KHTN - Scientific Research Methodology</b></h1>
