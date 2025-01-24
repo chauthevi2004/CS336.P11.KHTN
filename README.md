@@ -4,8 +4,6 @@
 
 # Project Title: VIDEO RETRIEVAL SYSTEM
 
-This repository implements a video retrieval system that uses frame extraction, embeddings, and an interactive interface for retrieving video frames based on text or multimodal inputs.
-
 ---
 
 ## Table of Contents
