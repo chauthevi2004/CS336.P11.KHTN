@@ -2,11 +2,7 @@
   <a href="https://www.uit.edu.vn/"><img src="https://www.uit.edu.vn/sites/vi/files/banner.png"></a>
 <h1 align="center"><b>CS336.P11.KHTN - Multimedia Information Retrieval</b></h1>
 
-<p align="center">
-  <a href="https://www.uit.edu.vn/"><img src="https://www.uit.edu.vn/sites/vi/files/banner.png"></a>
-<h1 align="center"><b>CS336.P11.KHTN - Multimedia Information Retrieval</b></h1>
-
-# Project Title: VIDEO RETRIEVAL SYSTEM
+# Project Title: EVENT RETRIEVAL FROM VIDEO
 
 ---
 
@@ -170,14 +166,12 @@ This project implements a **Video Retrieval System** that supports extracting fr
 ### `vietocr.ipynb`
 
 - **Purpose:** Performs OCR on video frames.
-- **Usage:**
-  - Detects and processes Vietnamese text.
+- **Usage:** Detects and processes Vietnamese text.
 
 ### `vectordb-blip2-coco.ipynb`
 
 - **Purpose:** Generates BLIP2-based embeddings for video frames.
-- **Usage:**
-  - Extracts visual features and stores them in a vector database for retrieval.
+- **Usage:** Extracts visual features and stores them in a vector database for retrieval.
 
 ---
 
@@ -197,7 +191,7 @@ This project utilizes the following tools and libraries:
 ### Instructor
 
 - **PhD Ngo Duc Thanh**
-  - Email: [thanhnd@uit.edu.vn](mailto:thanhnd@uit.edu.vn)
+  Email: [thanhnd@uit.edu.vn](mailto:thanhnd@uit.edu.vn)
 
 ### Team Members
 
