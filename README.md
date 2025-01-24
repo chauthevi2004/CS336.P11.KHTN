@@ -194,6 +194,7 @@ This project utilizes the following tools and libraries:
 ### Instructor
 
 - **PhD Ngo Duc Thanh**
+
   Email: [thanhnd@uit.edu.vn](mailto:thanhnd@uit.edu.vn)
 
 ### Team Members
