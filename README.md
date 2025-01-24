@@ -2,6 +2,10 @@
   <a href="https://www.uit.edu.vn/"><img src="https://www.uit.edu.vn/sites/vi/files/banner.png"></a>
 <h1 align="center"><b>CS336.P11.KHTN - Multimedia Information Retrieval</b></h1>
 
+<p align="center">
+  <a href="https://www.uit.edu.vn/"><img src="https://www.uit.edu.vn/sites/vi/files/banner.png"></a>
+<h1 align="center"><b>CS336.P11.KHTN - Multimedia Information Retrieval</b></h1>
+
 # Project Title: VIDEO RETRIEVAL SYSTEM
 
 ---
@@ -27,12 +31,12 @@ This project implements a **Video Retrieval System** that supports extracting fr
 
 ## Features
 
-- **Frame Extraction:** Extracts key frames from videos based on scene detection.
-- **Optical Character Recognition (OCR):** Extracts text from video frames, supporting Vietnamese language processing.
-- **Embeddings:** Generates embeddings for text and video frames for efficient similarity-based search.
+- **Frame Extraction:** Extracts key frames from videos based on scene detection using `scenedetect`.
+- **Optical Character Recognition (OCR):** Extracts text from video frames, supporting Vietnamese language processing with `VietOCR`.
+- **Embeddings:** Generates embeddings for text and video frames using `Sentence Transformers` and `BLIP2` for efficient similarity-based search.
 - **Multimodal Retrieval:** Combines text and frame embeddings to perform more comprehensive searches.
-- **Interactive Interface:** Streamlit-based interface for easy interaction.
-- **Temporal Search:** Retrieves sequential frames aligned with temporal input prompts.
+- **Interactive Interface:** Streamlit-based interface for seamless interaction.
+- **Temporal Search:** Retrieves sequential frames aligned with temporal input prompts to facilitate structured video analysis.
 
 ---
 
@@ -40,23 +44,27 @@ This project implements a **Video Retrieval System** that supports extracting fr
 
 ```
 .
-├── SourceCode/           # Core scripts and notebooks
-│   ├── extractframe.py       # Frame extraction script
-│   ├── Interface.py          # Streamlit-based interface
-│   ├── vietocr-embed.ipynb   # Vietnamese text embedding generation
-│   ├── vietocr.ipynb         # OCR processing notebook
-│   └── vectordb-blip2-coco.ipynb # Image embedding generation
-├── Data/                # Sample data and processed resources
+├── Data/                # Contains the dataset and processed resources
 │   ├── L01_V001.mp4         # Sample video file
-│   ├── frame/               # Extracted video frames
-│   ├── vietocr-embedding2/  # Vietnamese text embedding database
+│   ├── frame/               # Directory containing extracted frames
+│   ├── vietocr-embedding2/  # Resources for text embeddings
 │   │   ├── vector_database_text.usearch
 │   │   └── image_metadata_text.csv
-│   ├── vectordb-blip2-12/   # Image embedding database
+│   ├── vectordb-blip2-12/   # Resources for image embeddings
 │       ├── vector_database.usearch
 │       ├── image_metadata.csv
 │       ├── removed_images.pkl
-│       └── full/            # Additional embedding data
+│       └── full/            # Directory for raw embedding data
+├── SourceCode/           # Contains the source code for the project
+│   ├── extractframe.py       # Script for extracting frames from videos
+│   ├── Interface.py          # Streamlit-based retrieval interface
+│   ├── vietocr-embed.ipynb   # Notebook for Vietnamese text embeddings
+│   ├── vietocr.ipynb         # Notebook for OCR processing
+│   └── vectordb-blip2-coco.ipynb # Notebook for image embedding generation
+├── model/                # Contains pretrained models
+│   ├── sentence_transformer_model/  # Sentence Transformer model
+│   ├── translation_model/           # Translation model
+│   └── blip2_full_model.pth         # BLIP2 model checkpoint
 ├── requirements.txt      # Dependencies
 ├── README.md             # Documentation
 ```
@@ -67,7 +75,7 @@ This project implements a **Video Retrieval System** that supports extracting fr
 
 ### Prerequisites
 
-- Python 3.8+
+- Python 3.11
 - `ffmpeg` (for video processing)
 - CUDA (optional, for GPU acceleration)
 
@@ -79,14 +87,27 @@ This project implements a **Video Retrieval System** that supports extracting fr
    cd video-retrieval
    ```
 
-2. Install required dependencies:
+2. Create and activate the Conda environment:
    ```bash
+   conda create -n lavis python=3.11 -y
+   conda activate lavis
+   ```
+
+3. Upgrade `pip` and install dependencies:
+   ```bash
+   pip install --upgrade pip
+   pip install salesforce-lavis
+   pip install opencv-python==4.10.0.84
+   pip install sentence-transformers==2.2.2
+   pip install transformers==4.26.1
+   pip install huggingface-hub==0.12.1
    pip install -r requirements.txt
    ```
 
-3. Verify the following directories and files:
+4. Verify the following directories and files:
    - `SourceCode/`: Contains main scripts.
    - `Data/`: Includes sample videos and preprocessed resources.
+   - `model/`: Stores pretrained models required for embeddings and translation.
 
 ---
 
@@ -116,8 +137,9 @@ This project implements a **Video Retrieval System** that supports extracting fr
 
 ### Step 4: Query and Retrieve Results
 
-- Input text, reference frames, or both.
-- Use temporal search to retrieve sequences of frames matching temporal prompts.
+- **Text Retrieval:** Input descriptive text and retrieve matching frames.
+- **Multimodal Retrieval:** Combine text and image input for enhanced search results.
+- **Temporal Search:** Define sequences of temporal prompts to retrieve aligned video segments.
 
 ---
 
