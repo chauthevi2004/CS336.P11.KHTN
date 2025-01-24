@@ -2,9 +2,8 @@
   <a href="https://www.uit.edu.vn/"><img src="https://www.uit.edu.vn/sites/vi/files/banner.png"></a>
 <h2 align="center"><b>CS336.P11.KHTN - Multimedia Information Retrieval</b></h2>
 
-# **EVENT RETRIEVAL FROM VIDEO**
 <p align="center">
-    This title is centered.
+# **EVENT RETRIEVAL FROM VIDEO**
 </p>
 
 
