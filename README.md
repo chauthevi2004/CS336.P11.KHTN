@@ -8,221 +8,188 @@ This repository implements a video retrieval system that uses frame extraction, 
 
 ---
 
-## **Table of Contents**
+<p align="center">
+  <a href="https://www.uit.edu.vn/"><img src="https://www.uit.edu.vn/sites/vi/files/banner.png"></a>
+<h1 align="center"><b>CS519.O21.KHTN - Scientific Research Methodology</b></h1>
+
+# CS336.P11.KHTN - Video Retrieval System
+
+## Table of Contents
 
 1. [Overview](#overview)
-2. [Directory Structure](#directory-structure)
-3. [Installation](#installation)
-4. [How to Run](#how-to-run)
-5. [File Descriptions](#file-descriptions)
-6. [Example Use Cases](#example-use-cases)
+2. [Features](#features)
+3. [Directory Structure](#directory-structure)
+4. [Installation](#installation)
+5. [Usage](#usage)
+6. [File Descriptions](#file-descriptions)
 7. [Acknowledgements](#acknowledgements)
-8. [Group Information](#group-information)
+8. [Team Information](#team-information)
 
 ---
 
-## **Overview**
+## Overview
 
-This system enables users to:
-
-- Extract frames from videos based on scene changes.
-- Generate embeddings for text and video frames.
-- Perform multimodal retrieval (text-to-frame or frame-to-frame search).
-- Use an interactive interface for exploring and ranking retrieved results.
+This project implements a **Video Retrieval System** that supports extracting frames from videos, processing them with Optical Character Recognition (OCR), generating embeddings, and performing efficient retrieval using text or multimodal inputs. The system is equipped with a user-friendly interface built with Streamlit.
 
 ---
 
-## **Directory Structure**
+## Features
+
+- **Frame Extraction:** Extracts key frames from videos based on scene detection.
+- **Optical Character Recognition (OCR):** Extracts text from video frames, supporting Vietnamese language processing.
+- **Embeddings:** Generates embeddings for text and video frames for efficient similarity-based search.
+- **Multimodal Retrieval:** Combines text and frame embeddings to perform more comprehensive searches.
+- **Interactive Interface:** Streamlit-based interface for easy interaction.
+- **Temporal Search:** Retrieves sequential frames aligned with temporal input prompts.
+
+---
+
+## Directory Structure
 
 ```
-CS336.P11.KHTN/
-├── SourceCode/           # Contains the source code for the project
-│   ├── extractframe.py       # Script for extracting frames from videos
-│   ├── Interface.py          # Streamlit-based retrieval interface
-│   ├── vietocr-embed.ipynb   # Notebook for Vietnamese text embeddings
-│   ├── vietocr.ipynb         # Notebook for OCR processing
-│   └── vectordb-blip2-coco.ipynb # Notebook for image embedding generation
-├── Data/                # Contains the dataset and processed resources
+.
+├── SourceCode/           # Core scripts and notebooks
+│   ├── extractframe.py       # Frame extraction script
+│   ├── Interface.py          # Streamlit-based interface
+│   ├── vietocr-embed.ipynb   # Vietnamese text embedding generation
+│   ├── vietocr.ipynb         # OCR processing notebook
+│   └── vectordb-blip2-coco.ipynb # Image embedding generation
+├── Data/                # Sample data and processed resources
 │   ├── L01_V001.mp4         # Sample video file
-│   ├── frame/               # Directory containing extracted frames
-│   ├── vietocr-embedding2/  # Resources for text embeddings
-│   │   ├── vector_database_text.usearch  # Text embedding vector database
-│   │   └── image_metadata_text.csv       # Text embedding metadata
-│   ├── vectordb-blip2-12/   # Resources for image embeddings
-│   │   ├── vector_database.usearch       # Image embedding vector database
-│   │   ├── image_metadata.csv            # Metadata for image embeddings
-│   │   ├── removed_images.pkl            # Log of removed images
-│   │   └── full/                         # Directory for raw embedding data
+│   ├── frame/               # Extracted video frames
+│   ├── vietocr-embedding2/  # Vietnamese text embedding database
+│   │   ├── vector_database_text.usearch
+│   │   └── image_metadata_text.csv
+│   ├── vectordb-blip2-12/   # Image embedding database
+│       ├── vector_database.usearch
+│       ├── image_metadata.csv
+│       ├── removed_images.pkl
+│       └── full/            # Additional embedding data
+├── requirements.txt      # Dependencies
+├── README.md             # Documentation
 ```
-
-### **SourceCode Folder**
-
-- **extractframe.py**: Script to extract frames from videos using scene detection.
-- **Interface.py**: Provides an interactive Streamlit interface for video retrieval.
-- **vietocr-embed.ipynb**: Generates text embeddings for Vietnamese text extracted from video frames.
-- **vietocr.ipynb**: Processes frames to extract Vietnamese text using OCR.
-- **vectordb-blip2-coco.ipynb**: Creates image embeddings using BLIP2 and stores them in a vector database.
-
-### **Data Folder**
-
-- **L01_V001.mp4**: A sample video file for testing the retrieval system.
-- **frame/**: Contains frames extracted from the sample video, each named in the format `<video_name>.<frame_number>.jpg`.
-- **vietocr-embedding2/**:
-  - `vector_database_text.usearch`: Vector database of text embeddings for the OCR-processed text.
-  - `image_metadata_text.csv`: Metadata mapping text embeddings to their corresponding frames.
-- **vectordb-blip2-12/**:
-  - `vector_database.usearch`: Vector database for image embeddings created from video frames.
-  - `image_metadata.csv`: Metadata mapping image embeddings to their respective frames.
-  - `removed_images.pkl`: Contains information about frames removed during preprocessing.
-  - `full/`: Stores raw data and additional embeddings for images.
 
 ---
 
-## **Installation**
+## Installation
+
+### Prerequisites
+
+- Python 3.8+
+- `ffmpeg` (for video processing)
+- CUDA (optional, for GPU acceleration)
+
+### Steps
 
 1. Clone the repository:
-
    ```bash
-   git clone https://github.com/yourusername/video-retrieval.git
+   git clone <repository_url>
    cd video-retrieval
    ```
 
-2. Install the required Python dependencies:
-
+2. Install required dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Ensure you have the following additional tools installed:
-
-   - `ffmpeg` for video processing.
-   - `CUDA` for GPU acceleration (if available).
-
----
-
-## **How to Run**
-
-### **Step 1: Extract Frames from Videos**
-
-1. Place your video files in the `videos/` directory.
-2. Run `extractframe.py` to extract frames based on scene changes:
-   ```bash
-   python extractframe.py
-   ```
-   Frames will be saved in a new directory named after the video file, along with a CSV file containing frame timestamps.
-
-### **Step 2: Generate Embeddings**
-
-1. **Text Embeddings (Vietnamese):**
-
-   - Open `vietocr-embed.ipynb` and run all cells to generate text embeddings.
-
-2. **Image Embeddings:**
-
-   - Open `vectordb-blip2-coco.ipynb` and execute the notebook to create BLIP2-based embeddings for extracted frames.
-
-### **Step 3: Start the Interface**
-
-1. Launch the Streamlit interface:
-
-   ```bash
-   streamlit run Interface.py
-   ```
-
-2. Use the web interface to perform searches. Options include:
-
-   - Text-based retrieval.
-   - Multimodal (text and frame) retrieval.
-   - Temporal search for sequential frames.
+3. Verify the following directories and files:
+   - `SourceCode/`: Contains main scripts.
+   - `Data/`: Includes sample videos and preprocessed resources.
 
 ---
 
-## **File Descriptions**
+## Usage
+
+### Step 1: Extract Frames
+
+1. Place your video files in the `Data/` folder.
+2. Run the frame extraction script:
+   ```bash
+   python SourceCode/extractframe.py
+   ```
+   Frames and a CSV file with timestamps will be saved in a new directory named after the video.
+
+### Step 2: Generate Embeddings
+
+1. Open `vietocr-embed.ipynb` for text embeddings and run all cells.
+2. Open `vectordb-blip2-coco.ipynb` for image embeddings and execute the notebook.
+
+### Step 3: Launch the Interface
+
+1. Start the Streamlit interface:
+   ```bash
+   streamlit run SourceCode/Interface.py
+   ```
+2. Access the interface through the local server URL provided by Streamlit.
+
+### Step 4: Query and Retrieve Results
+
+- Input text, reference frames, or both.
+- Use temporal search to retrieve sequences of frames matching temporal prompts.
+
+---
+
+## File Descriptions
 
 ### `extractframe.py`
 
-- **Purpose:** Extracts key frames from videos using scene detection.
+- **Purpose:** Extracts key frames from videos based on scene changes.
 - **Key Functions:**
-  - `process_video(video_path)`: Detects scenes and saves the first frame of each scene.
-  - `process_all_videos_in_folder(folder_path)`: Processes all videos in a directory.
+  - `process_video(video_path)`: Detects scenes and extracts frames.
+  - `process_all_videos_in_folder(folder_path)`: Processes all videos in a specified folder.
 
 ### `Interface.py`
 
-- **Purpose:** Provides an interactive interface for video retrieval.
+- **Purpose:** Implements a Streamlit-based user interface for video retrieval.
 - **Features:**
-  - BLIP2-based image retrieval.
-  - Sentence Transformer-based text embedding search.
-  - Multimodal retrieval combining text and frame similarity.
-  - Temporal search for related video frames.
+  - Text-to-frame and multimodal search.
+  - Temporal sequence retrieval.
+  - Interactive image display and download options.
 
 ### `vietocr-embed.ipynb`
 
-- **Purpose:** Generates embeddings for Vietnamese text using OCR and a Sentence Transformer model.
+- **Purpose:** Generates embeddings for Vietnamese text extracted from video frames.
 - **Usage:**
-  - Load text from the video frames.
-  - Generate embeddings for each text snippet.
+  - Extract text using OCR.
+  - Generate embeddings for similarity-based retrieval.
 
 ### `vietocr.ipynb`
 
-- **Purpose:** Performs OCR on video frames to extract text.
+- **Purpose:** Performs OCR on video frames.
 - **Usage:**
-  - Detects and processes text in Vietnamese.
+  - Detects and processes Vietnamese text.
 
 ### `vectordb-blip2-coco.ipynb`
 
-- **Purpose:** Creates BLIP2-based embeddings for video frames.
+- **Purpose:** Generates BLIP2-based embeddings for video frames.
 - **Usage:**
-  - Extracts visual features from frames and saves them to a vector database.
+  - Extracts visual features and stores them in a vector database for retrieval.
 
 ---
 
-## **Example Use Cases**
+## Acknowledgements
 
-### **Text-to-Video Retrieval**
+This project utilizes the following tools and libraries:
 
-1. Enter a Vietnamese or English description in the interface.
-2. View the retrieved frames that best match your input.
-
-### **Multimodal Retrieval**
-
-1. Input both a description and a reference frame.
-2. The system retrieves frames matching both inputs.
-
-### **Temporal Search**
-
-1. Specify a sequence of subprompts (e.g., multiple descriptions for different scenes).
-2. Retrieve sequences of frames that align with the temporal order of the subprompts.
+- [SceneDetect](https://github.com/Breakthrough/PySceneDetect): Video scene detection.
+- [BLIP2](https://github.com/salesforce/LAVIS): Visual feature extraction.
+- [VietOCR](https://github.com/pbcquoc/vietocr): Vietnamese OCR.
+- [Sentence Transformers](https://www.sbert.net/): Text embeddings.
 
 ---
 
-## **Acknowledgements**
+## Team Information
 
-This project uses:
+### Instructor
 
-- [SceneDetect](https://github.com/Breakthrough/PySceneDetect) for scene detection.
-- [BLIP2](https://github.com/salesforce/LAVIS) for visual feature extraction.
-- [VietOCR](https://github.com/pbcquoc/vietocr) for Vietnamese OCR.
-- [Sentence Transformers](https://www.sbert.net/) for text embeddings.
+- **PhD Ngo Duc Thanh**
+  - Email: [thanhnd@uit.edu.vn](mailto:thanhnd@uit.edu.vn)
 
----
+### Team Members
 
-## **Group Information**
-
-### **Course Information**
-
-- Course Name: MULTIMEDIA INFORMATION RETRIEVAL
-- Class Code: CS336.P11.KHTN
-
-### **Instructor**
-
-- **PhD Ngo Duc Thanh**  
-  - Email: thanhnd@uit.edu.vn
-
-### **Team Members**
-
-| STT | Name               | MSSV     | Email                                                   | GitHub |
-| --- | ------------------ | -------- | ------------------------------------------------------- | ------ |
-| 1   | Tran Kim Ngoc Ngan | 22520002 | [22520002@gm.uit.edu.vn](mailto:22520002@gm.uit.edu.vn) |        |
-| 2   | Tran Minh Quan     | 22521191 | [22521191@gm.uit.edu.vn](mailto:22521191@gm.uit.edu.vn) |        |
-| 3   | Chau The Vi        | 22521653 | [22521653@gm.uit.edu.vn](mailto:22521653@gm.uit.edu.vn) |        |
+| STT | Name               | MSSV     | Email                         |
+| --- | ------------------ | -------- | ----------------------------- |
+| 1   | Tran Kim Ngoc Ngan | 22520002 | 22520002@gm.uit.edu.vn       |
+| 2   | Tran Minh Quan     | 22521191 | 22521191@gm.uit.edu.vn       |
+| 3   | Chau The Vi        | 22521653 | 22521653@gm.uit.edu.vn       |
 
