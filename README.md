@@ -8,12 +8,6 @@ This repository implements a video retrieval system that uses frame extraction, 
 
 ---
 
-<p align="center">
-  <a href="https://www.uit.edu.vn/"><img src="https://www.uit.edu.vn/sites/vi/files/banner.png"></a>
-<h1 align="center"><b>CS519.O21.KHTN - Scientific Research Methodology</b></h1>
-
-# CS336.P11.KHTN - Video Retrieval System
-
 ## Table of Contents
 
 1. [Overview](#overview)
